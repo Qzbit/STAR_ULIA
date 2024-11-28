@@ -1,21 +1,24 @@
-<!-- index.html -->
-<html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор чисел по Пифагору</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
+
+<div class="container">
+    <h1>Калькулятор чисел по Пифагору</h1>
     <form action="/calculate" method="POST">
-        <input type="text" name="birthdate" placeholder="Введите дату рождения (ДД.ММ.ГГГГ)" required />
+        <label for="birthdate">Введите вашу дату рождения (дд.мм.гггг):</label>
+        <input type="text" id="birthdate" name="birthdate" placeholder="ДД.ММ.ГГГГ" required>
         <button type="submit">Рассчитать</button>
     </form>
-</body>
-</html>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</div>
 
-<!-- result.html -->
-<html>
-<body>
-    <h2>Числа по Пифагору</h2>
-    <p>День: {{ numbers.day }}</p>
-    <p>Месяц: {{ numbers.month }}</p>
-    <p>Год: {{ numbers.year }}</p>
-    <p>Сумма 1: {{ numbers.sum1 }}</p>
-    <p>Сумма 2: {{ numbers.sum2 }}</p>
 </body>
 </html>
