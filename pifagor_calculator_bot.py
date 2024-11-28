@@ -70,7 +70,7 @@ def calculate():
         numbers = calculate_numbers(day, month, year)
         return render_template('result.html', numbers=numbers)
     except Exception as e:
-        return "Ошибка! Пожалуйста, введите дату в формате дд.мм.гггг."
+        return render_template('index.html', error="Ошибка! Пожалуйста, введите дату в формате дд.мм.гггг.")
 
 # Запуск Flask приложения и Telegram бота в отдельных потоках
 if __name__ == '__main__':
@@ -78,4 +78,4 @@ if __name__ == '__main__':
     threading.Thread(target=start_telegram_bot).start()
 
     # Запускаем Flask приложение
-    app.run()
+    app.run(debug=True)
