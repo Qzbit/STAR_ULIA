@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Пифагоровы числа</title>
-</head>
+<!-- index.html -->
+<html>
 <body>
-    <h1>Введите дату рождения:</h1>
-    <form action="/calculate" method="post">
-        <input type="text" name="birthdate" placeholder="ДД.ММ.ГГГГ" required>
+    <form action="/calculate" method="POST">
+        <input type="text" name="birthdate" placeholder="Введите дату рождения (ДД.ММ.ГГГГ)" required />
         <button type="submit">Рассчитать</button>
     </form>
+</body>
+</html>
+
+<!-- result.html -->
+<html>
+<body>
+    <h2>Числа по Пифагору</h2>
+    <p>День: {{ numbers.day }}</p>
+    <p>Месяц: {{ numbers.month }}</p>
+    <p>Год: {{ numbers.year }}</p>
+    <p>Сумма 1: {{ numbers.sum1 }}</p>
+    <p>Сумма 2: {{ numbers.sum2 }}</p>
 </body>
 </html>
