@@ -1,4 +1,5 @@
+--upgrade pip
 Flask==2.2.3
 flask-ngrok==0.0.25
 python-telegram-bot==20.0
-gunicorn==20.1.1
+gunicorn==20.1.0
