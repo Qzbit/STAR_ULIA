@@ -3,6 +3,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from flask import Flask, render_template, request
 from flask_ngrok import run_with_ngrok
+import threading
 
 # Настройки для Telegram
 TELEGRAM_TOKEN = '8099243411:AAHoh5HgGkbj0-dWzSZ9b8rZbrP7isqRJRo'
@@ -48,7 +49,7 @@ def calculate_numbers(day, month, year):
     }
 
 # Обработка команды /start
-def main():
+def start_telegram_bot():
     updater = Updater(TELEGRAM_TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
@@ -71,8 +72,10 @@ def calculate():
     except Exception as e:
         return "Ошибка! Пожалуйста, введите дату в формате дд.мм.гггг."
 
-# Запуск Flask приложения
+# Запуск Flask приложения и Telegram бота в отдельных потоках
 if __name__ == '__main__':
-    main()  # Запускаем Telegram бот
-    app.run()
+    # Запускаем Telegram-бота в отдельном потоке
+    threading.Thread(target=start_telegram_bot).start()
 
+    # Запускаем Flask приложение
+    app.run()
