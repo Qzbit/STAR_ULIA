@@ -38,12 +38,12 @@ def handle_date(update: Update, context: CallbackContext) -> None:
 # Функция для расчета чисел по Пифагору
 def calculate_numbers(day, month, year):
     # Простая логика для вычисления чисел
-    sum1 = (day + month) % 9
-    sum2 = (year + sum1) % 9
+    sum1 = (day + month) 
+    sum2 = (year + sum1)
     return {
-        'day': day % 9,
-        'month': month % 9,
-        'year': year % 9,
+        'day': day,
+        'month': month,
+        'year': year,
         'sum1': sum1,
         'sum2': sum2
     }
